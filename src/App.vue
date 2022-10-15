@@ -15,7 +15,7 @@
                         :(typeof weather.main != 'undefined' && weather.main.temp <= 2)
                           ? 'snow'
                             : ''">
-    <main>
+    <main class="container">
       <div class="search-box">
         <input 
           type="text" 
@@ -36,6 +36,10 @@
           <div class="temp">{{ Math.round(weather.main.temp) }}°c</div>
           <div class="weather">{{ weather.weather[0].main }}</div>
         </div>
+      </div>
+      <div v-if="typeof weather.main == 'undefined'" class="weather-app">
+        <h1 class="weather-title"> Weather App</h1>
+        <p class="weather-p">Programmed by: <a class="weather-a" href="https://github.com/allencarlosdev" target="_blank" rel="noopener noreferrer">Carlos Allen 😎👍</a></p>
       </div>
     </main>
   </div>
@@ -89,9 +93,16 @@ export default {
     font-family: 'montserrat', sans-serif;
   }
 
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   #app.default {
-    background-image: url('@/assets/cold.jpg');
-    background-size: cover;
+    background: #4CB8C4;
+    background: -webkit-linear-gradient(to right, #3CD3AD, #4CB8C4);
+    background: linear-gradient(to right, #3CD3AD, #4CB8C4);
     background-position: bottom;
     transition: 0.4s;
   }
@@ -119,11 +130,40 @@ export default {
   #app.foggy {
     background-image: url('@/assets/foggy.jpg');
   }
+  .weather-app{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40vw;
+    height: 85vh;
+    align-items: center;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur( 0.25rem );
+    -webkit-backdrop-filter: blur( 0.25rem);
+    border-radius: 2rem;
+    border: 0.063rem solid rgba( 255, 255, 255, 0.18 );
+  }
+  .weather-title{
+    color: #fff;
+    font-weight: 600;
+    font-size: 5rem;
+    text-shadow: 0.063rem 0.188rem rgba(0, 0, 0, 0.25);
+  }
+  .weather-p{
+    color: #fff;
+    text-shadow: 0.063rem 0.188rem rgba(0, 0, 0, 0.25);
+  }
+
+  .weather-a{
+    text-decoration: none;
+    color: #fff;
+  }
 
   main {
     min-height: 100vh;
     padding: 1.563rem;
-    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
+    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.3));
   }
 
   .search-box {
@@ -168,20 +208,34 @@ export default {
     text-align: center;
   }
 
+  .weather-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0rem 0rem 1rem rgb(0 0 0 / 25%);
+    width: 50vw;
+    height: 80vh;
+  }
+
   .weather-box {
+    display: flex;
+    flex-direction: column;
     text-align: center;
   }
 
   .weather-box .temp {
     display: inline-block;
-    padding: 0.6rem 1.8rem;
     color: #fff;
-    font-size: 6.5rem;
+    padding: 1rem;
+    font-size: 6rem;
     font-weight: 900;
     text-shadow: 0.188rem 0.375rem rgba(0, 0, 0, 0.25);
     background-color: rgba(255, 255, 255, 0.25);
     border-radius: 1rem;
-    margin: 5rem 0rem;
+    margin: 5rem 10rem;
     box-shadow: 0.188rem 0.375rem rgba(0, 0, 0, 0.25);
 
   }
@@ -193,4 +247,41 @@ export default {
     font-style: italic;
     text-shadow: 0.188rem 0.375rem rgba(0, 0, 0, 0.25);
   }
+
+  @media screen and (max-width: 1250px) {
+  
+    .weather-app{
+      width: 85vw;
+      height: 75vh;
+    }
+
+    .weather-title{
+      font-size: 2.5rem;
+    }
+
+    .weather-wrap{
+      width: 85vw;
+      height: 80vh;
+    }
+
+  .weather-box .temp {
+    margin: 5rem 0rem;
+  }
+}
+
+  @media screen and (max-width:350px){
+    .weather-title{
+      font-size: 2rem;
+    }
+
+    .weather-p{
+      font-size: 0.7rem;
+    }
+
+    .weather-box .temp {
+      font-size: 4.5rem;
+    }
+  }
+
+  
 </style>

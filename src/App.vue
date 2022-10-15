@@ -1,5 +1,20 @@
 <template>
-  <div id="app" :class="typeof weather.main != 'undefined' && weather.main.temp > 16 ? 'warm' : ''">
+  <div id="app" class="default"
+    :class="(typeof weather.main != 'undefined' && weather.main.temp < 30 && weather.main.temp > 2)
+    ? (weather.weather[0].main == 'Clouds'
+    ? 'clouds'
+      : (weather.weather[0].main == 'Clear')
+        ? 'clear'
+          :(weather.weather[0].main == 'Foggy')
+            ? 'foggy'
+              : (weather.weather[0].main == 'Rain')
+                ? 'rain'
+                  : ('default'))  
+                    : (typeof weather.main != 'undefined' && weather.main.temp > 29)
+                      ? 'warm'
+                        :(typeof weather.main != 'undefined' && weather.main.temp <= 2)
+                          ? 'snow'
+                            : ''">
     <main>
       <div class="search-box">
         <input 
@@ -34,9 +49,10 @@ export default {
       api_key: 'd318c1568848540b4f30e37598085539',
       url_base: 'https://api.openweathermap.org/data/2.5/',
       query: '',
-      weather: {}
+      weather: {},
     }
   },
+
   methods: {
     fetchWeather (e) {
       if (e.key == "Enter") {
@@ -58,7 +74,7 @@ export default {
       let month = months[d.getMonth()];
       let year = d.getFullYear();
       return `${day} ${date} ${month} ${year}`;
-    }
+    },
   }
 }
 </script>>
@@ -73,7 +89,7 @@ export default {
     font-family: 'montserrat', sans-serif;
   }
 
-  #app {
+  #app.default {
     background-image: url('@/assets/cold.jpg');
     background-size: cover;
     background-position: bottom;
@@ -82,6 +98,26 @@ export default {
 
   #app.warm {
     background-image: url('@/assets/warm.jpg');
+  }
+
+  #app.rain {
+    background-image: url('@/assets/rain.jpg');
+  }
+
+  #app.clouds {
+    background-image: url('@/assets/clouds.jpg');
+  }
+
+  #app.clear {
+    background-image: url('@/assets/clear.jpg');
+  }
+
+  #app.snow {
+    background-image: url('@/assets/snow.jpg');
+  }
+
+  #app.foggy {
+    background-image: url('@/assets/foggy.jpg');
   }
 
   main {

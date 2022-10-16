@@ -39,6 +39,10 @@
       </div>
       <div v-if="typeof weather.main == 'undefined'" class="weather-app">
         <h1 class="weather-title"> Weather App</h1>
+        <div class="time-container">
+          <div class="time" id="time">{{ clock() }}</div>
+          <div class="date" id="date">{{ dateBuilder() }}</div>
+        </div>
         <p class="weather-p">Programmed by: <a class="weather-a" href="https://github.com/allencarlosdev" target="_blank" rel="noopener noreferrer">Carlos Allen 😎👍</a></p>
       </div>
     </main>
@@ -56,7 +60,6 @@ export default {
       weather: {},
     }
   },
-
   methods: {
     fetchWeather (e) {
       if (e.key == "Enter") {
@@ -70,7 +73,7 @@ export default {
       this.weather = results;
     },
     dateBuilder () {
-      let d = new Date();
+      const d = new Date();
       let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       let day = days[d.getDay()];
@@ -79,6 +82,12 @@ export default {
       let year = d.getFullYear();
       return `${day} ${date} ${month} ${year}`;
     },
+    clock(){
+      setInterval(() => {
+        const local = new Date();
+            time.innerHTML = local.toLocaleTimeString();
+      }, 1000);
+    }
   }
 }
 </script>>
@@ -133,7 +142,7 @@ export default {
   .weather-app{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     width: 40vw;
     height: 85vh;
     align-items: center;
@@ -248,6 +257,26 @@ export default {
     text-shadow: 0.188rem 0.375rem rgba(0, 0, 0, 0.25);
   }
 
+  .time-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.25);
+    padding: 0.5rem;
+    box-shadow: 0.188rem 0.375rem rgba(0, 0, 0, 0.25);
+  }
+
+  .time{
+    font-size: 6rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .date{
+    color: #fff;
+  }
   @media screen and (max-width: 1250px) {
   
     .weather-app{
@@ -267,6 +296,10 @@ export default {
   .weather-box .temp {
     margin: 5rem 0rem;
   }
+
+  .time{
+    font-size: 5rem;
+  }
 }
 
   @media screen and (max-width:350px){
@@ -281,6 +314,10 @@ export default {
     .weather-box .temp {
       font-size: 4.5rem;
     }
+
+    .time{
+    font-size: 2em;
+  }
   }
 
   

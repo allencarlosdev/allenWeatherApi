@@ -30,7 +30,7 @@ VUE 3 with Vite
 
 ## Image
 
-![App Screenshot](https://github.com/allencarlosdev/allenWeatherApi/blob/main/src/assets/allenweatherapi.png)
+![App Screenshot](https://github.com/allencarlosdev/allenWeatherApi/blob/main/src/assets/allenweatherapi.jpg)
 
 ## LIVE
 

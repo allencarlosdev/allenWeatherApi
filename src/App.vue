@@ -302,7 +302,7 @@ export default {
   }
 }
 
-  @media screen and (max-width:350px){
+  @media screen and (max-width:450px){
     .weather-title{
       font-size: 2rem;
     }
@@ -316,7 +316,7 @@ export default {
     }
 
     .time{
-    font-size: 2em;
+    font-size: 1.5em;
   }
   }
 

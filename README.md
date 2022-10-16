@@ -1,29 +1,33 @@
-#  allenWeatherApi
+# Allen Weather Api
 
-This template should help get you started developing with Vue 3 in Vite.
+**Web Theme :**
 
-## Recommended IDE Setup
+Weather API
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+**Purpose of the page :**
 
-## Customize configuration
+Application in Vue 3 to consume Weather Api
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+**Objective as a programmer :**
 
-## Project Setup
+Consume APIs in Vue 3 and practice
 
-```sh
-npm install
-```
+**NOVELTIES, DIFFERENCES WITH RESPECT TO OTHER PORTFOLIO WEBSITES:**
 
-### Compile and Hot-Reload for Development
+- Vue 3 API
 
-```sh
-npm run dev
-```
+**The technologies used were :**
 
-### Compile and Minify for Production
+- HTML
+- CSS
+- JAVASCRIPT
+- VUE 3
 
-```sh
-npm run build
-```
+
+**Development environment :**
+
+VUE 3 with Vite
+
+## Image
+
+![App Screenshot](https://github.com/allencarlosdev/allenWeatherApi/blob/main/src/assets/allenweatherapi.png)
